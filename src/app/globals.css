@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+/*
+  Safarnama palette
+  ink    #12233D  text, dark surfaces
+  slate  #5B6B82  secondary text
+  fog    #F1F4F8  quiet section tint
+  line   #DCE3EC  borders, perforations
+  amber  #F4A62A  boarding-pass highlight, primary action
+  pine   #1D6B5F  confirmations, visa stamps
+*/
+@theme {
+  --color-ink: #12233d;
+  --color-slate: #5b6b82;
+  --color-fog: #f1f4f8;
+  --color-line: #dce3ec;
+  --color-amber: #f4a62a;
+  --color-amber-dark: #d98a10;
+  --color-pine: #1d6b5f;
+
+  --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-instrument), ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #ffffff;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-amber-dark);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Boarding-pass perforation: a dashed rule with half-circle notches on each end */
+.perforation {
+  position: relative;
+  border-top: 2px dashed var(--color-line);
+}
+.perforation::before,
+.perforation::after {
+  content: "";
+  position: absolute;
+  top: -13px;
+  width: 24px;
+  height: 24px;
+  border-radius: 9999px;
+  background: var(--notch-bg, #ffffff);
+}
+.perforation::before {
+  left: -12px;
+}
+.perforation::after {
+  right: -12px;
+}
+
+/* Elements animated in by GSAP start hidden only when JS is running */
+.js [data-reveal],
+.js [data-reveal-children] > * {
+  visibility: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .js [data-reveal],
+  .js [data-reveal-children] > * {
+    visibility: visible;
+  }
+}
