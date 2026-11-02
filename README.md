@@ -2,6 +2,8 @@
 
 A responsive travel agency website built for the **Bizwave Consultancy Frontend Developer assessment**. It covers four services (visa services, flight tickets, hotel booking and car rental) with working search forms that run on mock data.
 
+**Live site:** https://safarnama-travel-nine.vercel.app
+
 **Tech stack:** Next.js 16 (App Router) · React 19 · TypeScript · Tailwind CSS v4 · GSAP 3 (ScrollTrigger, MotionPath) with `@gsap/react`
 
 ## Features
